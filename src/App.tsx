@@ -12,6 +12,7 @@ function App() {
   const [todoList, setTodoList] = useState<Array<TodoType>>([]);
   const [theme, setTheme] = useState("");
     const [filter, setFilter] = useState("all");
+
   // setting the theme based on system prefers
   useEffect(() => {
     if (
@@ -25,14 +26,14 @@ function App() {
     }
   }, [theme]);
 
-  // get todoList from local storage
+  // get todoList from local storage when app renders
   useEffect(() => {
     const localTodos = localStorage.getItem("todos");
     if (localTodos !== null) {
       setTodoList([...JSON.parse(localTodos)]);
     }
   }, []);
-  // 
+  
   return (
     <div
       className={`App h-screen flex relative flex-col ${

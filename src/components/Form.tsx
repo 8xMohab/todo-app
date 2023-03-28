@@ -14,6 +14,8 @@ const Form = ({ todoList, setTodoList }: Props) => {
     completed: false,
     id: "",
   });
+
+  // handling the sumbition
   const submitHandle = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (todo.task && !todoList.find((item) => item.task === todo.task)) {
@@ -26,6 +28,7 @@ const Form = ({ todoList, setTodoList }: Props) => {
       setSubmitted(false);
     }, 500);
   };
+  
   return (
     <div className="w-full dark:bg-veryDarkDesaturatedBlue bg-veryLightGray rounded-lg transition-all duration-500 mb-4">
       <form

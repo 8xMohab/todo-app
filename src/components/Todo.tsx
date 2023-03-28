@@ -19,6 +19,7 @@ const Todo = ({ todo, setTodoList, todoList }: Props) => {
     transition,
   };
   // ----------
+
   const deleteTask = () => {
     setTodoList(todoList.filter((todos) => todos.id !== todo.id));
     localStorage.setItem(
@@ -26,6 +27,7 @@ const Todo = ({ todo, setTodoList, todoList }: Props) => {
       JSON.stringify(todoList.filter((todos) => todos.id !== todo.id))
     );
   };
+  
   const completeTask = () => {
     setTodoList(
       todoList.map((td) =>

@@ -19,6 +19,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+
 type Props = {
   todoList: Array<TodoType>;
   setTodoList: React.Dispatch<React.SetStateAction<any>>;
@@ -31,6 +32,8 @@ const TodosList = ({ todoList, setTodoList, filter, setFilter }: Props) => {
   const activeList: TodoType[] = todoList.filter(
     (todo) => todo.completed === false
   );
+
+  // set the filter
   switch (filter) {
     case "active":
       filteredList = activeList;
@@ -42,6 +45,7 @@ const TodosList = ({ todoList, setTodoList, filter, setFilter }: Props) => {
       filteredList = todoList;
       break;
   }
+
   const clearComplete = () => {
     setTodoList(todoList.filter((td) => td.completed === false));
     localStorage.setItem(
@@ -49,6 +53,7 @@ const TodosList = ({ todoList, setTodoList, filter, setFilter }: Props) => {
       JSON.stringify(todoList.filter((td) => td.completed === false))
     );
   };
+  // dnd
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
@@ -75,6 +80,7 @@ const TodosList = ({ todoList, setTodoList, filter, setFilter }: Props) => {
     },
   });
   const sensors = useSensors(mouseSensor, touchSensor);
+  
   return (
     <div className="light-shadow dark:dark-shadow">
       <DndContext
